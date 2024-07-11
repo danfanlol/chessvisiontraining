@@ -1,0 +1,9 @@
+.mateButton{
+    padding: 15px 40px;
+    font-size:40px;
+    border-radius:.4em;
+    outline:none;
+    border:none;
+    background-color:#333;
+    color:white
+}
