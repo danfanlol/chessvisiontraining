@@ -44,7 +44,8 @@ export default function Home() {
   
   
     const [showBoard, setShowBoard] = useState(false);
-    const [showPieces, setShowPieces] = useState(false);
+    const [showWhitePieces, setShowWhitePieces] = useState(false);
+    const [showBlackPieces, setShowBlackPieces] = useState(false);
     const [showSolution, setshowSolution] = useState(false);
   
     const generate = async () => {
@@ -62,7 +63,8 @@ export default function Home() {
     const handleShowBoardChange = (e) => {
       setShowBoard(e.target.checked);
       if (!e.target.checked) {
-          setShowPieces(false); // Ensure pieces checkbox is also unchecked if board checkbox is unchecked
+          setShowWhitePieces(false); // Ensure pieces checkbox is also unchecked if board checkbox is unchecked
+          setShowBlackPieces(false);
       }
     };
     const handleSolution = (e) => {
@@ -100,10 +102,20 @@ export default function Home() {
                   <label style={{ display: 'flex', gap: '20px', marginRight: "20px"}}>
                       <input
                           type="checkbox"
-                          checked={showPieces}
-                          onChange={() => setShowPieces(!showPieces)}
+                          checked={showWhitePieces}
+                          onChange={() => setShowWhitePieces(!showWhitePieces)}
                       />
-                      <h1 style={{ color: 'white' }}>Show Pieces</h1>
+                      <h1 style={{ color: 'white' }}>Show White</h1>
+                  </label>
+        )}
+        {showBoard && (
+                  <label style={{ display: 'flex', gap: '20px', marginRight: "20px"}}>
+                      <input
+                          type="checkbox"
+                          checked={showBlackPieces}
+                          onChange={() => setShowBlackPieces(!showBlackPieces)}
+                      />
+                      <h1 style={{ color: 'white' }}>Show Black</h1>
                   </label>
         )}
         <label style = {{display: "flex", gap: "10px"}}>
@@ -120,8 +132,8 @@ export default function Home() {
               ))}
             </div>
   
-            {showPieces && <Pieces whitepieces = {whiteMoves} blackpieces = {blackMoves} />}
-  
+            {showWhitePieces && <Pieces whitepieces = {whiteMoves} blackpieces = {[]} />}
+            {showBlackPieces && <Pieces whitepieces = {[]} blackpieces = {blackMoves} />}
             <Files files = {files} />
       </div>}
       {showSolution && <div style ={{marginTop: "35px"}}> 

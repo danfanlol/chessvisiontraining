@@ -4,3 +4,5 @@ g3e2
 g4h2
 c1g5
 c1g5
+c3d5
+c4d3
