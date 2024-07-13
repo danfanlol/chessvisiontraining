@@ -30,10 +30,14 @@ export default function Home() {
   const relay2 = () => {
     router.push("/puzzle-view2")
   }
+  const relay3 = () => {
+    router.push("/settings")
+  }
   return <div>
-    <div style={{display:"flex",marginTop:"40px", justifyContent:"center", gap:"40px"}}>
+    <div style={{transform: "translateX(160px)", display:"flex",marginTop:"40px", justifyContent:"center", gap:"40px"}}>
       <button className = "mateButton" onClick = {relay}> Mate in 2 </button>
       <button className = "mateButton" onClick = {relay2}> Winning Positions </button>
+      <button onClick = {relay3} style = {{transform: "translateX(180px)", padding: "15px 40px", fontSize:"40px", borderRadius:".4em", outline:"none", border:"none",backgroundColor:"#333",color:"white"}}> Settings </button>
     </div>
   </div>
 }

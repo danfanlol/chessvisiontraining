@@ -1,16 +1,18 @@
+@import "../../app/puzzle-view/constants.css";
+
 .pieces{
     position: absolute;
-    left: calc(1*var(--tile-size));
+    left: calc(var(--left)*var(--tile-size));
     right:0;
     top:0;
-    bottom: calc(.2*var(--tile-size));
+    bottom: calc(var(--bottom)*var(--tile-size));
 }
 
 .piece{
-    width: 13%;
-    height: 12%;
+    width: var(--width);
+    height: var(--height);
     position: absolute;
-    background-size:90%;
+    background-size:var(--backgroundSize);
 
 }
 

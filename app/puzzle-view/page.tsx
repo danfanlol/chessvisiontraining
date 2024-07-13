@@ -10,6 +10,8 @@ import Pieces from "../../components/Pieces/Pieces"
 import Generate from "../utils/generate"
 export default function Home() {
   const router = useRouter();
+  const [theme, setTheme] = useState("")
+
 
   const updateBodyStyles = (styles) => {
     const body = document.querySelector('body');
@@ -18,12 +20,37 @@ export default function Home() {
   }
   }
   useEffect(() => {
+    const savedTheme = localStorage.getItem('ToggleColorsPreference');
+    if (savedTheme){
+        setTheme(savedTheme)
+    }
     updateBodyStyles({
       display: 'grid',
       placeContent: 'center',
       height: 'auto',
       background: 'var(--bg-color)',
     });
+    if (savedTheme == "Individual"){
+      var r = document.documentElement;
+      r.style.setProperty('--xfactor', '87.5%');
+      r.style.setProperty('--yfactor', '103.3%');
+      r.style.setProperty('--backgroundSize', '90%');
+      r.style.setProperty("--left", "1")
+      r.style.setProperty("--bottom", ".2")
+      r.style.setProperty("--width", "13%")
+      r.style.setProperty("--height", "12%")
+    }
+    if (savedTheme == "Board"){
+      var r = document.documentElement;
+      r.style.setProperty('--xfactor', '100%');
+      r.style.setProperty('--yfactor', '100%');
+      r.style.setProperty('--backgroundSize', '100%');
+      r.style.setProperty("--left", ".25")
+      r.style.setProperty("--bottom", ".25")
+      r.style.setProperty("--width", "12.5%")
+      r.style.setProperty("--height", "12.5%")
+      
+    }
   }, []);
   const getClassName = (i,j) => {
     let c = "tile"
@@ -42,6 +69,8 @@ export default function Home() {
   const [showBoard, setShowBoard] = useState(false);
   const [showWhitePieces, setShowWhitePieces] = useState(false);
   const [showBlackPieces, setShowBlackPieces] = useState(false);
+  const [showPieces, setShowPieces] = useState(false);
+
   const [showSolution, setshowSolution] = useState(false);
 
   const generate = async () => {
@@ -93,7 +122,7 @@ export default function Home() {
         <input type="checkbox" checked={showBoard} onChange={handleShowBoardChange}/>
         <h1 style= {{color: "white"}}> Show Board </h1>
       </label>
-      {showBoard && (
+      {theme === "Individual" && showBoard && (
                   <label style={{ display: 'flex', gap: '20px', marginRight: "20px"}}>
                       <input
                           type="checkbox"
@@ -103,7 +132,7 @@ export default function Home() {
                       <h1 style={{ color: 'white' }}>Show White</h1>
                   </label>
         )}
-        {showBoard && (
+        {theme === "Individual" && showBoard && (
                   <label style={{ display: 'flex', gap: '20px', marginRight: "20px"}}>
                       <input
                           type="checkbox"
@@ -112,6 +141,16 @@ export default function Home() {
                       />
                       <h1 style={{ color: 'white' }}>Show Black</h1>
                   </label>
+        )}
+        {theme === "Board" && showBoard && (
+          <label style={{ display: 'flex', gap: '20px', marginRight: "20px"}}>
+            <input
+                type="checkbox"
+                checked={showPieces}
+                onChange={() => setShowPieces(!showPieces)}
+            />
+            <h1 style={{ color: 'white' }}>Show Pieces</h1>
+          </label>
         )}
       <label style = {{display: "flex", gap: "10px"}}>
         <input type="checkbox" checked = {showSolution} onChange={handleSolution} />
@@ -129,6 +168,8 @@ export default function Home() {
 
           {showWhitePieces && <Pieces whitepieces = {whiteMoves} blackpieces = {[]} />}
           {showBlackPieces && <Pieces whitepieces = {[]} blackpieces = {blackMoves} />}
+          {showPieces && <Pieces whitepieces = {whiteMoves} blackpieces = {blackMoves} />}
+
 
           <Files files = {files} />
     </div>}
@@ -138,6 +179,5 @@ export default function Home() {
         i != 0 ? <h1 style={{color:'white', textAlign:"center"}}> {x} </h1> : null
       )}
       </div>}
-
     </div>
 }

@@ -10,24 +10,52 @@ import Ranks from "../../components/bits/Ranks"
 import Pieces from "../../components/Pieces/Pieces"
 import Generate from "../utils/generate2"
 
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState} from 'react';
 export default function Home() {
+    const [theme, setTheme] = useState("")
+
     const router = useRouter();
 
     const updateBodyStyles = (styles) => {
       const body = document.querySelector('body');
       if (body) {
         Object.assign(body.style, styles);
+      }
     }
-    }
+
     useEffect(() => {
+      const savedTheme = localStorage.getItem('ToggleColorsPreference');
+      if (savedTheme){
+          setTheme(savedTheme)
+      }
       updateBodyStyles({
         display: 'grid',
         placeContent: 'center',
         height: 'auto',
         background: 'var(--bg-color)',
       });
+      if (savedTheme == "Individual"){
+        var r = document.documentElement;
+        r.style.setProperty('--xfactor', '87.5%');
+        r.style.setProperty('--yfactor', '103.3%');
+        r.style.setProperty('--backgroundSize', '90%');
+        r.style.setProperty("--left", "1")
+        r.style.setProperty("--bottom", ".2")
+        r.style.setProperty("--width", "13%")
+        r.style.setProperty("--height", "12%")
+      }
+      if (savedTheme == "Board"){
+        var r = document.documentElement;
+        r.style.setProperty('--xfactor', '100%');
+        r.style.setProperty('--yfactor', '100%');
+        r.style.setProperty('--backgroundSize', '100%');
+        r.style.setProperty("--left", ".25")
+        r.style.setProperty("--bottom", ".25")
+        r.style.setProperty("--width", "12.5%")
+        r.style.setProperty("--height", "12.5%")
+        
+      }
+
     }, []);
     const getClassName = (i,j) => {
       let c = "tile"
@@ -41,11 +69,13 @@ export default function Home() {
     const [moves,setMoves] = useState([])
   
     const [sidetoplay, setSidetoPlay] = useState("")
-  
+    
   
     const [showBoard, setShowBoard] = useState(false);
     const [showWhitePieces, setShowWhitePieces] = useState(false);
     const [showBlackPieces, setShowBlackPieces] = useState(false);
+    const [showPieces, setShowPieces] = useState(false);
+
     const [showSolution, setshowSolution] = useState(false);
   
     const generate = async () => {
@@ -98,7 +128,7 @@ export default function Home() {
           <input type="checkbox" checked={showBoard} onChange={handleShowBoardChange}/>
           <h1 style= {{color: "white"}}> Show Board </h1>
         </label>
-        {showBoard && (
+        {theme === "Individual" && showBoard && (
                   <label style={{ display: 'flex', gap: '20px', marginRight: "20px"}}>
                       <input
                           type="checkbox"
@@ -108,7 +138,7 @@ export default function Home() {
                       <h1 style={{ color: 'white' }}>Show White</h1>
                   </label>
         )}
-        {showBoard && (
+        {theme === "Individual" && showBoard && (
                   <label style={{ display: 'flex', gap: '20px', marginRight: "20px"}}>
                       <input
                           type="checkbox"
@@ -117,6 +147,16 @@ export default function Home() {
                       />
                       <h1 style={{ color: 'white' }}>Show Black</h1>
                   </label>
+        )}
+        {theme === "Board" && showBoard && (
+          <label style={{ display: 'flex', gap: '20px', marginRight: "20px"}}>
+            <input
+                type="checkbox"
+                checked={showPieces}
+                onChange={() => setShowPieces(!showPieces)}
+            />
+            <h1 style={{ color: 'white' }}>Show Pieces</h1>
+          </label>
         )}
         <label style = {{display: "flex", gap: "10px"}}>
           <input type="checkbox" checked = {showSolution} onChange={handleSolution} />
@@ -134,6 +174,7 @@ export default function Home() {
   
             {showWhitePieces && <Pieces whitepieces = {whiteMoves} blackpieces = {[]} />}
             {showBlackPieces && <Pieces whitepieces = {[]} blackpieces = {blackMoves} />}
+            {showPieces && <Pieces whitepieces = {whiteMoves} blackpieces = {blackMoves} />}
             <Files files = {files} />
       </div>}
       {showSolution && <div style ={{marginTop: "35px"}}> 
@@ -142,7 +183,6 @@ export default function Home() {
           <h1 style={{color:'white', textAlign:"center"}}> {x} </h1>
         )}
         </div>}
-  
       </div>
   }
   
