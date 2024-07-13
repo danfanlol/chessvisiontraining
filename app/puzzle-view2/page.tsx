@@ -28,6 +28,9 @@ export default function Home() {
       if (savedTheme){
           setTheme(savedTheme)
       }
+      else{ //new user 
+        setTheme("Board")
+      }
       updateBodyStyles({
         display: 'grid',
         placeContent: 'center',
