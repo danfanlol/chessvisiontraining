@@ -1,11 +1,10 @@
-@import "../puzzle-view/constants.css";
+@import "./constants.css";
 
 
 
 body{
     display:grid;
     place-content: center;
-    
     height: auto;
     background: var(--bg-color)
 }
@@ -25,12 +24,29 @@ body{
     width: calc(8*var(--tile-size))
 
 }
+
+.tile--light{
+    background: var(--light-tile);
+}
+.tile--dark{
+    background: var(--dark-tile);
+}
 .tile{
     position: relative;
 }
-.tile--light{
-    background: var(--light-tile)
+.attacking:after{
+    content: "";
+    display: block;
+    position: absolute;
+    background: rgba(0,0,0,.1);
+    border-radius: 50%;
+    width: calc(.5*var(--tile-size));
+    height: calc(.5*var(--tile-size));
+    left: 25%;
+    top: 25%;
+    opacity: 0;
 }
-.tile--dark{
-    background: var(--dark-tile)
+
+.attacking.active:after{
+    opacity: 1;
 }

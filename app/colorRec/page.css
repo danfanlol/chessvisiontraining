@@ -1,11 +1,10 @@
-@import "../puzzle-view/constants.css";
+@import "./constants.css";
 
 
 
 body{
     display:grid;
     place-content: center;
-    
     height: auto;
     background: var(--bg-color)
 }
@@ -25,9 +24,7 @@ body{
     width: calc(8*var(--tile-size))
 
 }
-.tile{
-    position: relative;
-}
+
 .tile--light{
     background: var(--light-tile)
 }

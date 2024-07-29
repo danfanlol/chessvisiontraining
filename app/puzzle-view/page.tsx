@@ -33,27 +33,6 @@ export default function Home() {
       height: 'auto',
       background: 'var(--bg-color)',
     });
-    if (savedTheme == "Individual"){
-      var r = document.documentElement;
-      r.style.setProperty('--xfactor', '87.5%');
-      r.style.setProperty('--yfactor', '103.3%');
-      r.style.setProperty('--backgroundSize', '90%');
-      r.style.setProperty("--left", "1")
-      r.style.setProperty("--bottom", ".2")
-      r.style.setProperty("--width", "13%")
-      r.style.setProperty("--height", "12%")
-    }
-    if (savedTheme == "Board"){
-      var r = document.documentElement;
-      r.style.setProperty('--xfactor', '100%');
-      r.style.setProperty('--yfactor', '100%');
-      r.style.setProperty('--backgroundSize', '100%');
-      r.style.setProperty("--left", ".25")
-      r.style.setProperty("--bottom", ".25")
-      r.style.setProperty("--width", "12.5%")
-      r.style.setProperty("--height", "12.5%")
-      
-    }
   }, []);
   const getClassName = (i,j) => {
     let c = "tile"
@@ -121,9 +100,9 @@ export default function Home() {
           
   
     <div style = {{display: "flex", justifyContent: "center"}}>
-      <label style = {{display: "flex", gap: "10px", marginRight: "20px"}}>
+      <label style = {{display: "flex", gap: "20px", marginRight: "20px"}}>
         <input type="checkbox" checked={showBoard} onChange={handleShowBoardChange}/>
-        <h1 style= {{color: "white"}}> Show Board </h1>
+        <h1 style= {{color: "white"}}> Board </h1>
       </label>
       {theme === "Individual" && showBoard && (
                   <label style={{ display: 'flex', gap: '20px', marginRight: "20px"}}>
@@ -132,7 +111,7 @@ export default function Home() {
                           checked={showWhitePieces}
                           onChange={() => setShowWhitePieces(!showWhitePieces)}
                       />
-                      <h1 style={{ color: 'white' }}>Show White</h1>
+                      <h1 style={{ color: 'white' }}>White</h1>
                   </label>
         )}
         {theme === "Individual" && showBoard && (
@@ -142,7 +121,7 @@ export default function Home() {
                           checked={showBlackPieces}
                           onChange={() => setShowBlackPieces(!showBlackPieces)}
                       />
-                      <h1 style={{ color: 'white' }}>Show Black</h1>
+                      <h1 style={{ color: 'white' }}>Black</h1>
                   </label>
         )}
         {theme === "Board" && showBoard && (
@@ -152,12 +131,12 @@ export default function Home() {
                 checked={showPieces}
                 onChange={() => setShowPieces(!showPieces)}
             />
-            <h1 style={{ color: 'white' }}>Show Pieces</h1>
+            <h1 style={{ color: 'white' }}>Pieces</h1>
           </label>
         )}
       <label style = {{display: "flex", gap: "10px"}}>
         <input type="checkbox" checked = {showSolution} onChange={handleSolution} />
-        <h1 style= {{color: "white"} }> Show Solution </h1>
+        <h1 style= {{color: "white"} }>Solution </h1>
       </label>
     </div> 
     {showBoard && <div className="board">
