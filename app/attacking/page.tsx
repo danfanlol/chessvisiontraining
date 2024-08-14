@@ -119,7 +119,7 @@ export default function Home() {
                 checked={showPieces}
                 onChange={() => setShowPieces(!showPieces)}
             />
-            <h1 style={{ color: 'white' }}>Show Pieces</h1>
+            <h1 style={{ color: 'white' }}>Show Piece</h1>
           </label>}
           <label style={{ display: 'flex', gap: '20px', marginRight: "20px"}}>
             <input
