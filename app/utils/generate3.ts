@@ -1,4 +1,4 @@
-const Generate = () => {
+const Generate = async () => {
     const files = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const ranks = ['1', '2', '3', '4', '5', '6', '7', '8'];
     const x = Math.floor(Math.random() * files.length)

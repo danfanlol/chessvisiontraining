@@ -70,18 +70,18 @@ const Generate = async () => {
                 }
                 rowpos += 1
                 if (character.toUpperCase() == "R"){
-                    white == 1 ? whiterook.push("Rook on " + letters2[letters[index]] + rowpos) : blackrook.push("Rook on " + letters2[letters[index]] + rowpos)
+                    white == "1" ? whiterook.push("Rook on " + letters2[letters[index]] + rowpos) : blackrook.push("Rook on " + letters2[letters[index]] + rowpos)
                 }
                 if (character.toUpperCase() == "N")
-                  white == 1 ? whiteknight.push("Knight on " + letters2[letters[index]] + rowpos) : blackknight.push("Knight on " + letters2[letters[index]] + rowpos)
+                  white == "1" ? whiteknight.push("Knight on " + letters2[letters[index]] + rowpos) : blackknight.push("Knight on " + letters2[letters[index]] + rowpos)
                 if (character.toUpperCase() == "K")
-                  white == 1 ? whiteKing.push("King on " + letters2[letters[index]] + rowpos) : blackKing.push("King on " + letters2[letters[index]] + rowpos)
+                  white == "1" ? whiteKing.push("King on " + letters2[letters[index]] + rowpos) : blackKing.push("King on " + letters2[letters[index]] + rowpos)
                 if (character.toUpperCase() == "P")
-                  white == 1 ? whitepawn.push("Pawn on " + letters2[letters[index]] + rowpos) : blackpawn.push("Pawn on " + letters2[letters[index]] + rowpos)
+                  white == "1" ? whitepawn.push("Pawn on " + letters2[letters[index]] + rowpos) : blackpawn.push("Pawn on " + letters2[letters[index]] + rowpos)
                 if (character.toUpperCase() == "B")
-                  white == 1 ? whitebishop.push("Bishop on " + letters2[letters[index]] + rowpos) : blackbishop.push("Bishop on " + letters2[letters[index]] + rowpos)
+                  white == "1" ? whitebishop.push("Bishop on " + letters2[letters[index]] + rowpos) : blackbishop.push("Bishop on " + letters2[letters[index]] + rowpos)
                 if (character.toUpperCase() == "Q")
-                  white == 1 ? whiteQueen.push("Queen on " + letters2[letters[index]] + rowpos) : blackQueen.push("Queen on " + letters2[letters[index]] + rowpos)
+                  white == "1" ? whiteQueen.push("Queen on " + letters2[letters[index]] + rowpos) : blackQueen.push("Queen on " + letters2[letters[index]] + rowpos)
                 index += 1
                 rowpos -= 1
             }
@@ -89,12 +89,12 @@ const Generate = async () => {
                 index += Number(character)
             }
           }
-          const see = [...whitepawn,...whitebishop,...whiteknight,...whiterook,...whiteQueen,...whiteKing]
+          const see : string[] = [...whitepawn,...whitebishop,...whiteknight,...whiterook,...whiteQueen,...whiteKing]
           const see2 = [...blackpawn,...blackbishop,...blackknight,...blackrook,...blackQueen,...blackKing]
           return [see,see2,sidetomove,moves] 
       } catch (error) {
         console.error(error);
-        return [[], [], "ERROR (probably ran out of requests...)",[]]
+        return [["ASD","ASD"], [], "ERROR (probably ran out of requests...)",[]]
       }
     
       

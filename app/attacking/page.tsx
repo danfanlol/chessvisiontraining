@@ -64,9 +64,9 @@ export default function Home() {
 
 
 
-    const generate = () => {
+    const generate = async () => {
       
-      const res = Generate()
+      const res = await Generate()
       setWhiteMoves(res[0])
       const newPosition = Array.from({ length: 8 }, () => Array(8).fill(0));
 
@@ -146,10 +146,10 @@ export default function Home() {
       {showSolution && <div style ={{marginTop: "35px"}}> 
         <h1 style = {{color:'white', textAlign:'center', fontSize:"38px"}}> Solution: </h1>
         <div style = {{display: "flex", justifyContent: "center" ,gap: "100px", color: "white"}}> 
-          {possible[0].length != 0 && <div> {possible[0].map((item) => <h1> {"abcdefgh"[item[0]-1] + "" + item[1]} </h1>)} </div>}
-          {possible[1].length != 0 && <div> {possible[1].map((item) => <h1> {"abcdefgh"[item[0]-1] + "" + item[1]} </h1>)} </div>}
-          {possible[2].length != 0 && <div> {possible[2].map((item) => <h1> {"abcdefgh"[item[0]-1] + "" + item[1]} </h1>)} </div>}
-          {possible[3].length != 0 && <div> {possible[3].map((item) => <h1> {"abcdefgh"[item[0]-1] + "" + item[1]} </h1>)} </div>}
+          {possible[0]?.length != 0 && <div> {possible[0]?.map((item, index) => <h1 key = {index}> {"abcdefgh"[item[0]-1] + "" + item[1]} </h1>)} </div>}
+          {possible[1]?.length != 0 && <div> {possible[1]?.map((item, index) => <h1 key = {index}> {"abcdefgh"[item[0]-1] + "" + item[1]} </h1>)} </div>}
+          {possible[2]?.length != 0 && <div> {possible[2]?.map((item, index) => <h1 key = {index}> {"abcdefgh"[item[0]-1] + "" + item[1]} </h1>)} </div>}
+          {possible[3]?.length != 0 && <div> {possible[3]?.map((item, index) => <h1 key = {index}> {"abcdefgh"[item[0]-1] + "" + item[1]} </h1>)} </div>}
         </div>
 
         </div>}

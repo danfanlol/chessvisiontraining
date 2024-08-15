@@ -41,8 +41,8 @@ export default function Home() {
   }
   const ranks = Array.from({length:8},(x,i) => 8-i)
   const files = Array.from({length:8},(x,i) => getCharacter(i+1))
-  const [whiteMoves, setWhiteMoves] = useState([])
-  const [blackMoves,setBlackMoves] = useState([])
+  const [whiteMoves, setWhiteMoves] = useState<string[]>([]);
+  const [blackMoves,setBlackMoves] = useState<string[]>([]);
   const [moves,setMoves] = useState([])
 
   const [sidetoplay, setSidetoPlay] = useState("")
@@ -86,11 +86,11 @@ export default function Home() {
         <div style= {{display: "flex", justifyContent:"center", gap: "300px", color: "white"}}>
           <div>
             {whiteMoves.length != 0 ? <h1 style = {{textAlign:"center"}}> White </h1> : null}
-            {whiteMoves.map((piece) => <h2 style = {{textAlign:"center"}}> {piece} </h2> )}
+            {whiteMoves.map((piece, index) => <h2 key = {index} style = {{textAlign:"center"}}> {piece} </h2> )}
           </div>
           <div>
             {whiteMoves.length != 0 ? <h1 style = {{textAlign:"center"}}> Black </h1> : null}
-            {blackMoves.map((piece) => <h2 style = {{textAlign:"center"}}> {piece} </h2> )}
+            {blackMoves.map((piece, index) => <h2 key = {index} style = {{textAlign:"center"}}> {piece} </h2> )}
           </div>
         </div>
         <div>
@@ -158,7 +158,7 @@ export default function Home() {
     {showSolution && <div style ={{marginTop: "35px"}}> 
       <h1 style = {{color:'white', textAlign:'center', fontSize:"38px"}}> Solution: </h1>
       {moves.map((x, i) => 
-        i != 0 ? <h1 style={{color:'white', textAlign:"center"}}> {x} </h1> : null
+        i != 0 ? <h1 key = {i} style={{color:'white', textAlign:"center"}}> {x} </h1> : null
       )}
       </div>}
     </div>
