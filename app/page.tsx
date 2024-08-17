@@ -39,16 +39,34 @@ export default function Home() {
   const relayToAttacking =() => {
     router.push("/attacking")
   }
+  const relaytoabout = () => {
+    router.push("/about")
+  }
   
   return <div>
-    <div style={{transform: "translateX(160px)", display:"flex",marginTop:"40px", justifyContent:"center", gap:"40px"}}>
+    <div style = {{justifyContent:"center", display:"flex", borderBottom:"2px solid #d0d0d0", paddingBottom: "10px"}}>
+      <h1 style = {{transform: "translateX(-290px)", color: "white", textAlign:"center", fontFamily:"avenir"}}> Chess Vision Training</h1>
+      <h1 style = {{transform: "translateX(50px)",color: "white", textAlign:"center"}}> <i> "Chess, first of all, is art" - Mikhail Tal  </i></h1>
+
+      <button onClick = {relaytoabout} style = {{transform: "translateX(280px)", padding: "15px 40px", fontSize:"40px", borderRadius:".4em", outline:"none", border:"none",backgroundColor:"#333",color:"white"}}> FAQ </button>
+      <button onClick = {relay3} style = {{transform: "translateX(300px)", padding: "15px 40px", fontSize:"40px", borderRadius:".4em", outline:"none", border:"none",backgroundColor:"#333",color:"white"}}> Settings </button>
+
+    </div>
+    <h1 style = {{color:"white", textAlign:"center", marginTop:"40px"}}> Beginner Exercises </h1>
+    <div style={{ display:"flex",marginTop:"40px", justifyContent:"center", gap:"40px", borderBottom:"2px solid #d0d0d0", paddingBottom: "60px"}}>
+
       <button className = "mateButton" onClick = {relayToColor}> Color Recognition </button>
       <button className = "mateButton" onClick = {relayToAttacking}> Attacking Squares </button>
-      <button onClick = {relay3} style = {{transform: "translateX(180px)", padding: "15px 40px", fontSize:"40px", borderRadius:".4em", outline:"none", border:"none",backgroundColor:"#333",color:"white"}}> Settings </button>
     </div>
-    <div style={{transform: "translateX(27px)", display:"flex",marginTop:"40px", justifyContent:"center", gap:"40px"}}>
-      <button className = "mateButton" onClick = {relay}> Mate in 2 </button>
+    <h1 style = {{color:"white", textAlign:"center", marginTop:"40px"}}> Intermediate Exercises </h1>
+    <div style={{ display:"flex",marginTop:"40px", justifyContent:"center", gap:"40px", borderBottom:"2px solid #d0d0d0", paddingBottom: "60px"}}>
+
       <button className = "mateButton" onClick = {relay2}> Winning Positions </button>
     </div>
+    <h1 style = {{color:"white", textAlign:"center", marginTop:"40px"}}> Advanced Exercises </h1>
+    <div style={{ display:"flex",marginTop:"40px", justifyContent:"center", gap:"40px", borderBottom:"2px solid #d0d0d0", paddingBottom: "60px"}}>
+      <button className = "mateButton" onClick = {relay}> Checkmates </button>
+    </div>
+  
   </div>
 }

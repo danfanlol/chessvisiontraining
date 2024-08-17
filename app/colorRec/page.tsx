@@ -27,16 +27,23 @@ export default function Home() {
       height: 'auto',
       background: 'var(--bg-color)',
     });
+    
   }, []);
   const getClassName = (i,j) => {
     let c = "tile"
     c += (i+j) % 2 === 0 ? " tile--dark" : " tile--light"
+    if (position[j][i - 2] === 1 && showSolution) {
+      c += " attacking active";
+    } else if (position[j][i - 2] === 1) {
+      c += " attacking";
+    }
     return c
   }
   const ranks = Array.from({length:8},(x,i) => 8-i)
   const files = Array.from({length:8},(x,i) => getCharacter(i+1))
 
   const [showBoard, setShowBoard] = useState(false);
+  const [position, setPosition] = useState(Array.from({ length: 8 }, () => Array(8).fill(0)));
 
   const generate = async () => {
     
@@ -56,6 +63,15 @@ export default function Home() {
     }
     setSquare(randomFile + randomRank)
     setshowSolution(false);
+
+
+    const newPosition = Array.from({ length: 8 }, () => Array(8).fill(0));
+
+    const alphabet = "abcdefgh"
+    newPosition[x][y] = 1
+    setPosition(newPosition);
+
+
   }
   const handleSolution = (e) => {
     setshowSolution(e.target.checked)

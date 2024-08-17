@@ -31,3 +31,22 @@ body{
 .tile--dark{
     background: var(--dark-tile)
 }
+.tile{
+    position: relative;
+}
+.attacking:after{
+    content: "";
+    display: block;
+    position: absolute;
+    background: rgba(0,0,0,.1);
+    border-radius: 50%;
+    width: calc(.5*var(--tile-size));
+    height: calc(.5*var(--tile-size));
+    left: 25%;
+    top: 25%;
+    opacity: 0;
+}
+
+.attacking.active:after{
+    opacity: 1;
+}

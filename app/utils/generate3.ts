@@ -46,7 +46,6 @@ const Generate = async () => {
     
             }
             moves.push(subset);
-            console.log(subset.length)
         })
     }
     if (randomPiece == "b"){

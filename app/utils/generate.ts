@@ -10,24 +10,24 @@ const Generate = async () => {
       };
 
       try {
-        const object = {
-          puzzles: [
-            {
-              puzzleid: 'csRNO',
-              fen: '2rk2nr/pp4Qp/4pp2/qB1p1b2/P2P4/1Pb5/2P1NPPP/R3K2R w KQ - 0 14',
-              rating: 1636,
-              ratingdeviation: 151,
-              moves: [Array],
-              themes: [Array]
-            }
-          ]
-        }
-        const moves = ["d3e4","f6e4","f5e7","f1f8"]
-        const board = object.puzzles[0].fen
-        // const response = await fetch(url, options);
-        // const result = await response.json();
-        // const board = result.puzzles[0].fen
-        // const moves = result.puzzles[0].moves
+        // const object = {
+        //   puzzles: [
+        //     {
+        //       puzzleid: 'csRNO',
+        //       fen: '2rk2nr/pp4Qp/4pp2/qB1p1b2/P2P4/1Pb5/2P1NPPP/R3K2R w KQ - 0 14',
+        //       rating: 1636,
+        //       ratingdeviation: 151,
+        //       moves: [Array],
+        //       themes: [Array]
+        //     }
+        //   ]
+        // }
+        // const moves = ["d3e4","f6e4","f5e7","f1f8"]
+        // const board = object.puzzles[0].fen
+        const response = await fetch(url, options);
+        const result = await response.json();
+        const board = result.puzzles[0].fen
+        const moves = result.puzzles[0].moves
    
 
         var index = 0
