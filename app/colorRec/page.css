@@ -42,8 +42,6 @@ body{
     border-radius: 50%;
     width: calc(.5*var(--tile-size));
     height: calc(.5*var(--tile-size));
-    left: 25%;
-    top: 25%;
     opacity: 0;
 }
 
